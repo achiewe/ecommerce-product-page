@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import MenuSvg from "../../src/images/icon-menu.svg";
-import closeSvg from "./../images/icon-close.svg";
+import MenuSvg from "../../../src/images/icon-menu.svg";
+import closeSvg from "../../images/icon-close.svg";
 import { useState } from "react";
 
 const BurgerMenu = (): JSX.Element => {

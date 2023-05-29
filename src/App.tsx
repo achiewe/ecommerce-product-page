@@ -1,12 +1,14 @@
 import styled from "styled-components";
 import GlobalStyles from "./GlobalStyles";
-import Header from "./components/Header";
+import Header from "./components/Header/Header";
+import MainSneakers from "./components/Main/MainSneakers";
 
 function App(): JSX.Element {
   return (
     <MainContainer>
       <GlobalStyles />
       <Header />
+      <MainSneakers />
     </MainContainer>
   );
 }

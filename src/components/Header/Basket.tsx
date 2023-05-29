@@ -1,11 +1,16 @@
 import styled from "styled-components";
-import cartSvg from "../images/icon-cart.svg";
+import cartSvg from "../../images/icon-cart.svg";
+import { useState } from "react";
 
 const Basket = (): JSX.Element => {
+  const [basketClick, setBasketClick] = useState<boolean>(false);
+  const cartClick = () => {
+    setBasketClick(!basketClick);
+  };
   return (
     <BasketMain>
-      <img src={cartSvg} alt="cartSvg" />
-      <BasketDiv>
+      <img onClick={cartClick} src={cartSvg} alt="cartSvg" />
+      <BasketDiv basketClick={basketClick}>
         <h3> Cart</h3>
         <hr />
         <p> Your cart is empty.</p>
@@ -21,16 +26,16 @@ const BasketMain = styled.div`
   align-items: center;
 `;
 
-const BasketDiv = styled.div`
+const BasketDiv = styled.div<{ basketClick: boolean }>`
   width: 360px;
   height: 256px;
   background-color: #ffffff;
   gap: 27px;
-  display: flex;
+  display: ${(props) => (props.basketClick ? "flex" : "none")};
   position: absolute;
   top: 76px;
-  right: 0;
-  left: 0;
+  left: 0%;
+  right: 0%;
   margin: auto 0;
   border-radius: 10px;
   padding: 24px 0 32px 0;

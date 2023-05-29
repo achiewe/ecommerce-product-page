@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import BurgerMenu from "./BurgerMenu";
-import Logo from "../../src/images/logo.svg";
-import avatarPng from "../../src/images/image-avatar.png";
+import Logo from "../../../src/images/logo.svg";
+import avatarPng from "../../../src/images/image-avatar.png";
 import Basket from "./Basket";
 
 const Header = (): JSX.Element => {
@@ -25,6 +25,7 @@ const HeaderMain = styled.header`
   flex-direction: row;
   justify-content: space-between;
   padding: 24px 24px 0 24px;
+  margin-bottom: 28px;
   align-items: center;
 
   .burger-title {
