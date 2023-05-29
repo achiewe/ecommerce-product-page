@@ -1,13 +1,19 @@
 import styled from "styled-components";
 import BurgerMenu from "./BurgerMenu";
 import Logo from "../../src/images/logo.svg";
+import avatarPng from "../../src/images/image-avatar.png";
+import Basket from "./Basket";
 
 const Header = (): JSX.Element => {
   return (
     <HeaderMain>
       <div className="burger-title">
         <BurgerMenu />
-        <img src={Logo} alt="logo svg" />
+        <img className="logo-svg" src={Logo} alt="logo svg" />
+      </div>
+      <div className="basket-profile">
+        <Basket />
+        <img className="avatar-png" src={avatarPng} alt="avatar png" />
       </div>
     </HeaderMain>
   );
@@ -27,6 +33,19 @@ const HeaderMain = styled.header`
     gap: 16px;
     align-items: center;
     justify-content: center;
+  }
+
+  .basket-profile {
+    display: flex;
+    flex-direction: row;
+    gap: 22px;
+    align-items: center;
+    justify-content: center;
+
+    .avatar-png {
+      width: 24px;
+      height: 24px;
+    }
   }
 `;
 
