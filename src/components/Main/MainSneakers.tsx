@@ -1,10 +1,12 @@
 import styled from "styled-components";
 import SneakersImages from "./SneakersImages";
+import SneakersInfo from "./SneakersInfo";
 
 const MainSneakers = (): JSX.Element => {
   return (
     <SneakersMain>
       <SneakersImages />
+      <SneakersInfo />
     </SneakersMain>
   );
 };
@@ -15,6 +17,5 @@ const SneakersMain = styled.main`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 24px;
 `;
 export default MainSneakers;
