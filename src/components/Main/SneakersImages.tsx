@@ -1,27 +1,47 @@
+import { useState } from "react";
 import styled from "styled-components";
+import previousIcon from "../../images/icon-previous.svg";
 import product1 from "../../images/image-product-1.jpg";
 import product2 from "../../images/image-product-2.jpg";
 import product3 from "../../images/image-product-3.jpg";
 import product4 from "../../images/image-product-4.jpg";
-import previousIcon from "../../images/icon-previous.svg";
 import nextIcon from "../../images/icon-next.svg";
 
 const SneakersImages = (): JSX.Element => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const images = [product1, product2, product3, product4];
+
+  const previousImage = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+    );
+  };
+
+  const nextImage = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === images.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
   return (
     <ImagesMain>
       <div className="arrow-main">
-        <div className="div-arrow">
+        <div className="div-arrow" onClick={previousImage}>
           <img className="left-right" src={previousIcon} alt="previous icon" />
         </div>
-        <div className="div-arrow">
+        <div className="div-arrow" onClick={nextImage}>
           <img className="left-right" src={nextIcon} alt="next icon" />
         </div>
       </div>
-      <div className="carusel">
-        <img className="product" src={product1} alt="product image" />
-        <img className="product" src={product2} alt="product image" />
-        <img className="product" src={product3} alt="product image" />
-        <img className="product" src={product4} alt="product image" />
+      <div className="carousel">
+        {images.map((image, index) => (
+          <img
+            key={index}
+            className={`product ${index === currentImageIndex ? "active" : ""}`}
+            src={image}
+            alt="product image"
+          />
+        ))}
       </div>
     </ImagesMain>
   );
@@ -29,9 +49,6 @@ const SneakersImages = (): JSX.Element => {
 
 const ImagesMain = styled.div`
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   max-width: 1200px;
   position: relative;
 
@@ -59,19 +76,23 @@ const ImagesMain = styled.div`
   .left-right {
     width: 5.71px;
     height: 11.43px;
-    border: 3px solid #1d2026;
-    transform: matrix(-1, 0, 0, 1, 0, 0);
   }
 
-  .carusel {
+  .carousel {
     white-space: nowrap;
     overflow-x: hidden;
   }
+
   .product {
     width: 100%;
     object-fit: cover;
     height: 300px;
-    margin-left: 14px;
+    transition: opacity 0.3s ease-in-out;
+    display: none;
+  }
+
+  .product.active {
+    display: flex;
   }
 
   .product:first-child {
