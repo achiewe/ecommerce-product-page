@@ -22,6 +22,8 @@ const MainInfo = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  margin-top: 24px;
+  margin-bottom: 28px;
   gap: 15px;
   padding: 0 24px;
 

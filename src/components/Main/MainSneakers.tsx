@@ -1,12 +1,14 @@
 import styled from "styled-components";
 import SneakersImages from "./SneakersImages";
 import SneakersInfo from "./SneakersInfo";
+import PriceProduct from "./PriceProduct";
 
 const MainSneakers = (): JSX.Element => {
   return (
     <SneakersMain>
       <SneakersImages />
       <SneakersInfo />
+      <PriceProduct />
     </SneakersMain>
   );
 };
