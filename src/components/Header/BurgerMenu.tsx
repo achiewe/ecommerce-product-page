@@ -56,6 +56,7 @@ const MenuDiv = styled.div<{ isClicked: boolean }>`
   gap: 54px;
   padding: 25px 0 0 25px;
   justify-content: flex-start;
+  z-index: 1;
   align-items: flex-start;
   left: ${(props) => (props.isClicked ? "0" : "-300px")};
   top: 0;

@@ -37,6 +37,7 @@ const BasketDiv = styled.div<{ basketClick: boolean }>`
   left: 0%;
   right: 0%;
   margin: auto 0;
+  z-index: 1;
   border-radius: 10px;
   padding: 24px 0 32px 0;
   flex-direction: column;
