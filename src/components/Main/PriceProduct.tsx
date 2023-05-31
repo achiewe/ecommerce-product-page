@@ -1,8 +1,21 @@
 import styled from "styled-components";
 import iconMinus from "../../images/icon-minus.svg";
 import iconPlus from "../../images/icon-plus.svg";
+import { useState } from "react";
 
 const PriceProduct = (): JSX.Element => {
+  const [calculate, setCalculate] = useState<number>(0);
+
+  const add = (): void => {
+    setCalculate(calculate + 1);
+  };
+
+  const subtract = (): void => {
+    if (calculate !== 0) {
+      setCalculate(calculate - 1);
+    }
+  };
+
   return (
     <PriceMain>
       <div className="price-div">
@@ -15,11 +28,11 @@ const PriceProduct = (): JSX.Element => {
       <div className="count-main">
         <div className="count-price">
           <button className="button-plusmin">
-            <img src={iconMinus} alt="minus icon" />
+            <img src={iconMinus} alt="minus icon" onClick={subtract} />
           </button>
-          <h5> 0</h5>
+          <h5> {calculate}</h5>
           <button className="button-plusmin">
-            <img src={iconPlus} alt="minus icon" />
+            <img src={iconPlus} alt="plus icon" onClick={add} />
           </button>
         </div>
         <button className="cart-button">
