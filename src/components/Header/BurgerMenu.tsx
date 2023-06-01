@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import MenuSvg from "../../../src/images/icon-menu.svg";
 import closeSvg from "../../images/icon-close.svg";
-import { useState } from "react";
 
 interface burgerProps {
   isClicked: boolean;
@@ -45,6 +44,9 @@ const BurgerMain = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (min-width: 1024px) {
+    display: none;
+  }
 
   .menu-svg {
     cursor: pointer;

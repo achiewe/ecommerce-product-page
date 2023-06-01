@@ -37,6 +37,9 @@ const MainContainer = styled.div`
   align-items: center;
   position: relative;
   flex-direction: column;
+  @media (min-width: 1024px) {
+    padding: 28px 0 132px 0;
+  }
 `;
 
 const Overlay = styled.div<{ isClicked: boolean }>`
