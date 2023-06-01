@@ -17,13 +17,21 @@ const Basket = ({ result, setResult }: basketProps): JSX.Element => {
 
   const overallCost = result * 125;
   return (
-    <BasketMain>
-      <img
+    <BasketMain result={result}>
+      <svg
+        width="22"
+        height="20"
+        xmlns="http://www.w3.org/2000/svg"
         className="cart-svg"
         onClick={cartClick}
-        src={cartSvg}
-        alt="cartSvg"
-      />
+      >
+        <path
+          d="M20.925 3.641H3.863L3.61.816A.896.896 0 0 0 2.717 0H.897a.896.896 0 1 0 0 1.792h1l1.031 11.483c.073.828.52 1.726 1.291 2.336C2.83 17.385 4.099 20 6.359 20c1.875 0 3.197-1.87 2.554-3.642h4.905c-.642 1.77.677 3.642 2.555 3.642a2.72 2.72 0 0 0 2.717-2.717 2.72 2.72 0 0 0-2.717-2.717H6.365c-.681 0-1.274-.41-1.53-1.009l14.321-.842a.896.896 0 0 0 .817-.677l1.821-7.283a.897.897 0 0 0-.87-1.114ZM6.358 18.208a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm10.015 0a.926.926 0 0 1 0-1.85.926.926 0 0 1 0 1.85Zm2.021-7.243-13.8.81-.57-6.341h15.753l-1.383 5.53Z"
+          fill="#69707D"
+          fill-rule="nonzero"
+        />
+      </svg>
+      <div className="count-number"> {result}</div>
       <BasketDiv basketClick={basketClick} result={result}>
         <h3> Cart</h3>
         <hr />
@@ -61,15 +69,32 @@ const Basket = ({ result, setResult }: basketProps): JSX.Element => {
   );
 };
 
-const BasketMain = styled.div`
+const BasketMain = styled.div<{ result: number }>`
   width: 100%;
   display: flex;
   justify-content: center;
+  position: relative;
   align-items: center;
-
-  .cart-svg {
+  .cart-svg:hover path {
     cursor: pointer;
-    fill: red;
+    fill: #1d2026;
+  }
+
+  .count-number {
+    width: 19px;
+    height: 13px;
+    background-color: #ff7e1b;
+    border-radius: 6.5px;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 12px;
+    letter-spacing: 0px;
+    text-align: center;
+    position: absolute;
+    display: ${(props) => (props.result === 0 ? "none" : "block")};
+    top: -5px;
+    left: 10px;
+    color: #ffffff;
   }
 `;
 
@@ -82,7 +107,7 @@ const BasketDiv = styled.div<{ basketClick: boolean; result: number }>`
   position: absolute;
   top: 76px;
   box-shadow: 0px 20px 50px -20px rgba(29, 32, 38, 0.503143);
-  right: 7.5px;
+  right: -63px;
   margin: auto 0;
   z-index: 1;
   border-radius: 10px;
@@ -91,6 +116,9 @@ const BasketDiv = styled.div<{ basketClick: boolean; result: number }>`
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  @media (min-width: 1024px) {
+    right: -170px;
+  }
 
   h3 {
     font-size: 16px;
