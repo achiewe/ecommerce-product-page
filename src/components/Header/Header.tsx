@@ -22,26 +22,29 @@ const Header = ({
   };
   return (
     <HeaderMain>
-      <div className="burger-title">
-        <BurgerMenu isClicked={isClicked} setIsClicked={setIsClicked} />
-        <div className="interface-burger">
-          <h2> Collections</h2>
-          <h2> Men</h2>
-          <h2> Women</h2>
-          <h2> About</h2>
-          <h2> Contact</h2>
+      <div className="header-container">
+        <div className="burger-title">
+          <BurgerMenu isClicked={isClicked} setIsClicked={setIsClicked} />
+          <div className="interface-burger">
+            <h2> Collections</h2>
+            <h2> Men</h2>
+            <h2> Women</h2>
+            <h2> About</h2>
+            <h2> Contact</h2>
+          </div>
+          <img
+            className="logo-svg"
+            src={Logo}
+            alt="logo svg"
+            onClick={handleClick}
+          />
         </div>
-        <img
-          className="logo-svg"
-          src={Logo}
-          alt="logo svg"
-          onClick={handleClick}
-        />
+        <div className="basket-profile">
+          <Basket result={result} setResult={setResult} />
+          <img className="avatar-png" src={avatarPng} alt="avatar png" />
+        </div>
       </div>
-      <div className="basket-profile">
-        <Basket result={result} setResult={setResult} />
-        <img className="avatar-png" src={avatarPng} alt="avatar png" />
-      </div>
+      <hr />
     </HeaderMain>
   );
 };
@@ -49,16 +52,26 @@ const Header = ({
 const HeaderMain = styled.header`
   width: 100%;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   padding: 24px 24px 0 24px;
   margin-bottom: 28px;
+  justify-content: center;
   align-items: center;
   @media (min-width: 1024px) {
     max-width: 1110px;
-    position: relative;
     padding: 0;
+    flex-direction: column;
+    gap: 49px;
+    margin-bottom: 90px;
   }
+
+  .header-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   .burger-title {
     display: flex;
     flex-direction: row;
@@ -112,6 +125,17 @@ const HeaderMain = styled.header`
         width: 50px;
         height: 50px;
       }
+    }
+  }
+
+  hr {
+    display: none;
+    @media (min-width: 1024px) {
+      display: block;
+      width: 100%;
+      border: none;
+      height: 1px;
+      background-color: #e4e9f2;
     }
   }
 `;
