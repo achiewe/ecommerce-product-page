@@ -7,16 +7,23 @@ import Basket from "./Basket";
 interface headerProps {
   result: number;
   setResult: (result: number) => void;
+  isClicked: boolean;
+  setIsClicked(isClicked: boolean): void;
 }
 
-const Header = ({ result, setResult }: headerProps): JSX.Element => {
+const Header = ({
+  result,
+  setResult,
+  isClicked,
+  setIsClicked,
+}: headerProps): JSX.Element => {
   const handleClick = () => {
     location.reload();
   };
   return (
     <HeaderMain>
       <div className="burger-title">
-        <BurgerMenu />
+        <BurgerMenu isClicked={isClicked} setIsClicked={setIsClicked} />
         <img
           className="logo-svg"
           src={Logo}

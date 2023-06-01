@@ -3,13 +3,18 @@ import MenuSvg from "../../../src/images/icon-menu.svg";
 import closeSvg from "../../images/icon-close.svg";
 import { useState } from "react";
 
-const BurgerMenu = (): JSX.Element => {
-  const [isClicked, setIsClicked] = useState<boolean>(false);
+interface burgerProps {
+  isClicked: boolean;
+  setIsClicked(isClicked: boolean): void;
+}
+
+const BurgerMenu = ({ isClicked, setIsClicked }: burgerProps): JSX.Element => {
   const handleClick = () => {
     setIsClicked(!isClicked);
   };
   return (
     <BurgerMain>
+      <div className="overlay"></div>
       <img
         onClick={handleClick}
         className="menu-svg"

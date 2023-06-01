@@ -6,11 +6,18 @@ import { useState } from "react";
 
 function App(): JSX.Element {
   const [calculate, setCalculate] = useState<number>(0);
+  const [isClicked, setIsClicked] = useState<boolean>(false);
   const [result, setResult] = useState<number>(0);
   return (
     <MainContainer>
       <GlobalStyles />
-      <Header result={result} setResult={setResult} />
+      <Overlay isClicked={isClicked} />
+      <Header
+        result={result}
+        setResult={setResult}
+        isClicked={isClicked}
+        setIsClicked={setIsClicked}
+      />
       <MainSneakers
         calculate={calculate}
         setCalculate={setCalculate}
@@ -30,6 +37,16 @@ const MainContainer = styled.div`
   align-items: center;
   position: relative;
   flex-direction: column;
+`;
+
+const Overlay = styled.div<{ isClicked: boolean }>`
+  width: 100%;
+  height: 100vh;
+  background-color: #000000;
+  opacity: 0.75;
+  position: absolute;
+  display: ${(props) => (props.isClicked ? "block" : "none")};
+  z-index: 1;
 `;
 
 export default App;
