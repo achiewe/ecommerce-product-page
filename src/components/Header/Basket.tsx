@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import cartSvg from "../../images/icon-cart.svg";
 import imagethumbnail from "../../images/image-product-1-thumbnail.jpg";
 import deleteIcon from "../../images/icon-delete.svg";
 import { useState } from "react";
