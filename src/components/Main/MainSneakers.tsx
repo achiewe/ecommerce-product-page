@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import SneakersImages from "./SneakersImages";
 import SneakersInfo from "./SneakersInfo";
+import SneakersImgDesk from "./SneakersImgDesk";
 
 interface PropsSneakers {
   calculate: number;
@@ -18,6 +19,7 @@ const MainSneakers = ({
   return (
     <SneakersMain>
       <SneakersImages />
+      <SneakersImgDesk />
       <SneakersInfo
         calculate={calculate}
         setCalculate={setCalculate}

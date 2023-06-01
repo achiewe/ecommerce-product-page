@@ -51,6 +51,9 @@ const ImagesMain = styled.div`
   width: 100%;
   max-width: 1200px;
   position: relative;
+  @media (min-width: 1024px) {
+    display: none;
+  }
 
   .arrow-main {
     width: 100%;
