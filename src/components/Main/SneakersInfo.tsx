@@ -1,6 +1,19 @@
 import styled from "styled-components";
+import PriceProduct from "./PriceProduct";
 
-const SneakersInfo = (): JSX.Element => {
+interface PropsProduct {
+  calculate: number;
+  setCalculate: (calculate: number) => void;
+  result: number;
+  setResult(result: number): void;
+}
+
+const SneakersInfo = ({
+  calculate,
+  setCalculate,
+  result,
+  setResult,
+}: PropsProduct): JSX.Element => {
   return (
     <MainInfo>
       <div>
@@ -12,6 +25,12 @@ const SneakersInfo = (): JSX.Element => {
         Featuring a durable rubber outer sole, they’ll withstand everything the
         weather can offer.
       </p>
+      <PriceProduct
+        calculate={calculate}
+        setCalculate={setCalculate}
+        setResult={setResult}
+        result={result}
+      />
     </MainInfo>
   );
 };
@@ -26,6 +45,11 @@ const MainInfo = styled.div`
   margin-bottom: 28px;
   gap: 15px;
   padding: 0 24px;
+  @media (min-width: 1024px) {
+    padding: 0;
+    gap: 30px;
+    margin: 0;
+  }
 
   div {
     width: 100%;
@@ -34,6 +58,9 @@ const MainInfo = styled.div`
     justify-content: flex-start;
     align-items: flex-start;
     gap: 19px;
+    @media (min-width: 1024px) {
+      gap: 27px;
+    }
 
     h3 {
       font-size: 12px;
@@ -42,6 +69,13 @@ const MainInfo = styled.div`
       letter-spacing: 1.8461538553237915px;
       color: #ff7e1b;
       text-transform: uppercase;
+      @media (min-width: 1024px) {
+        font-size: 13px;
+        font-weight: 700;
+        line-height: 16px;
+        letter-spacing: 2px;
+        text-align: left;
+      }
     }
 
     h2 {
@@ -51,6 +85,13 @@ const MainInfo = styled.div`
       letter-spacing: 0px;
       text-align: left;
       color: #1d2026;
+      @media (min-width: 1024px) {
+        font-size: 44px;
+        font-weight: 700;
+        line-height: 48px;
+        letter-spacing: 0px;
+        text-align: left;
+      }
     }
   }
 
@@ -60,6 +101,13 @@ const MainInfo = styled.div`
     line-height: 25px;
     letter-spacing: 0px;
     color: #69707d;
+    @media (min-width: 1024px) {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 26px;
+      letter-spacing: 0px;
+      text-align: left;
+    }
   }
 `;
 export default SneakersInfo;

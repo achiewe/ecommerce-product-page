@@ -1,9 +1,8 @@
 import styled from "styled-components";
 import SneakersImages from "./SneakersImages";
 import SneakersInfo from "./SneakersInfo";
-import PriceProduct from "./PriceProduct";
 
-interface PropsMain {
+interface PropsSneakers {
   calculate: number;
   setCalculate: (calculate: number) => void;
   result: number;
@@ -13,18 +12,17 @@ interface PropsMain {
 const MainSneakers = ({
   calculate,
   setCalculate,
-  setResult,
   result,
-}: PropsMain): JSX.Element => {
+  setResult,
+}: PropsSneakers): JSX.Element => {
   return (
     <SneakersMain>
       <SneakersImages />
-      <SneakersInfo />
-      <PriceProduct
+      <SneakersInfo
         calculate={calculate}
         setCalculate={setCalculate}
-        setResult={setResult}
         result={result}
+        setResult={setResult}
       />
     </SneakersMain>
   );
@@ -36,5 +34,10 @@ const SneakersMain = styled.main`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  @media (min-width: 1024px) {
+    flex-direction: row;
+    max-width: 1110px;
+    gap: 125px;
+  }
 `;
 export default MainSneakers;

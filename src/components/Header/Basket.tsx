@@ -66,6 +66,10 @@ const BasketMain = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  .cart-svg {
+    cursor: pointer;
+  }
 `;
 
 const BasketDiv = styled.div<{ basketClick: boolean; result: number }>`

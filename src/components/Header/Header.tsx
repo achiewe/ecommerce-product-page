@@ -56,6 +56,7 @@ const HeaderMain = styled.header`
   align-items: center;
   @media (min-width: 1024px) {
     max-width: 1110px;
+    position: relative;
     padding: 0;
   }
   .burger-title {
