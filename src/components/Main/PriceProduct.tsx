@@ -74,6 +74,10 @@ const PriceMain = styled.div`
   padding: 0 24px;
   max-width: 500px;
   gap: 26px;
+  @media (min-width: 1024px) {
+    padding: 0;
+    gap: 32px;
+  }
 
   .price-div {
     width: 100%;
@@ -81,6 +85,12 @@ const PriceMain = styled.div`
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    @media (min-width: 1024px) {
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      gap: 10px;
+    }
 
     .price-number {
       width: 100%;
@@ -133,6 +143,10 @@ const PriceMain = styled.div`
     gap: 16px;
     justify-content: center;
     align-items: center;
+    @media (min-width: 1024px) {
+      flex-direction: row;
+      justify-content: flex-start;
+    }
 
     .count-price {
       width: 100%;
@@ -143,6 +157,10 @@ const PriceMain = styled.div`
       background-color: #f6f8fd;
       border-radius: 10px;
       padding: 21px 24px;
+      @media (min-width: 1024px) {
+        width: 157px;
+        padding: 21px 16px;
+      }
 
       .button-plusmin {
         border: none;
@@ -173,6 +191,9 @@ const PriceMain = styled.div`
       border-radius: 10px;
       background-color: #ff7e1b;
       box-shadow: 0px 20px 50px -20px #ff7e1b;
+      @media (min-width: 1024px) {
+        width: 272px;
+      }
 
       h2 {
         font-size: 16px;

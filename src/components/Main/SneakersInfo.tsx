@@ -16,7 +16,7 @@ const SneakersInfo = ({
 }: PropsProduct): JSX.Element => {
   return (
     <MainInfo>
-      <div>
+      <div className="sneakers-company">
         <h3> Sneaker Company</h3>
         <h2> Fall Limited Edition Sneakers</h2>
       </div>
@@ -51,7 +51,7 @@ const MainInfo = styled.div`
     margin: 0;
   }
 
-  div {
+  .sneakers-company {
     width: 100%;
     display: flex;
     flex-direction: column;
