@@ -2,7 +2,12 @@ import styled from "styled-components";
 import cartSvg from "../../images/icon-cart.svg";
 import { useState } from "react";
 
-const Basket = (): JSX.Element => {
+interface basketProps {
+  result: number;
+  setResult: (result: number) => void;
+}
+
+const Basket = ({}: basketProps): JSX.Element => {
   const [basketClick, setBasketClick] = useState<boolean>(false);
   const cartClick = () => {
     setBasketClick(!basketClick);

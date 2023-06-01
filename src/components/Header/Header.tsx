@@ -4,15 +4,28 @@ import Logo from "../../../src/images/logo.svg";
 import avatarPng from "../../../src/images/image-avatar.png";
 import Basket from "./Basket";
 
-const Header = (): JSX.Element => {
+interface headerProps {
+  result: number;
+  setResult: (result: number) => void;
+}
+
+const Header = ({ result, setResult }: headerProps): JSX.Element => {
+  const handleClick = () => {
+    location.reload();
+  };
   return (
     <HeaderMain>
       <div className="burger-title">
         <BurgerMenu />
-        <img className="logo-svg" src={Logo} alt="logo svg" />
+        <img
+          className="logo-svg"
+          src={Logo}
+          alt="logo svg"
+          onClick={handleClick}
+        />
       </div>
       <div className="basket-profile">
-        <Basket />
+        <Basket result={result} setResult={setResult} />
         <img className="avatar-png" src={avatarPng} alt="avatar png" />
       </div>
     </HeaderMain>

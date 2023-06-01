@@ -3,12 +3,29 @@ import SneakersImages from "./SneakersImages";
 import SneakersInfo from "./SneakersInfo";
 import PriceProduct from "./PriceProduct";
 
-const MainSneakers = (): JSX.Element => {
+interface PropsMain {
+  calculate: number;
+  setCalculate: (calculate: number) => void;
+  result: number;
+  setResult(result: number): void;
+}
+
+const MainSneakers = ({
+  calculate,
+  setCalculate,
+  setResult,
+  result,
+}: PropsMain): JSX.Element => {
   return (
     <SneakersMain>
       <SneakersImages />
       <SneakersInfo />
-      <PriceProduct />
+      <PriceProduct
+        calculate={calculate}
+        setCalculate={setCalculate}
+        setResult={setResult}
+        result={result}
+      />
     </SneakersMain>
   );
 };
