@@ -26,11 +26,30 @@ const Header = ({
         <div className="burger-title">
           <BurgerMenu isClicked={isClicked} setIsClicked={setIsClicked} />
           <div className="interface-burger">
-            <h2> Collections</h2>
-            <h2> Men</h2>
-            <h2> Women</h2>
-            <h2> About</h2>
-            <h2> Contact</h2>
+            <div className="choose-page">
+              <h2> Collections</h2>
+              <div className="hover"></div>
+            </div>
+
+            <div className="choose-page">
+              <h2> Men</h2>
+              <div className="hover"></div>
+            </div>
+
+            <div className="choose-page">
+              <h2> Women</h2>
+              <div className="hover"></div>
+            </div>
+
+            <div className="choose-page">
+              <h2> About</h2>
+              <div className="hover"></div>
+            </div>
+
+            <div className="choose-page">
+              <h2> Contact</h2>
+              <div className="hover"></div>
+            </div>
           </div>
           <img
             className="logo-svg"
@@ -96,14 +115,40 @@ const HeaderMain = styled.header`
         align-items: center;
         gap: 32px;
       }
-      h2 {
-        font-size: 15px;
-        font-weight: 400;
-        line-height: 26px;
-        letter-spacing: 0px;
-        text-align: left;
-        color: #69707d;
-        cursor: pointer;
+      .choose-page {
+        @media (min-width: 1024px) {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          position: relative;
+        }
+
+        .hover {
+          height: 4px;
+          background-color: #ff7e1b;
+          position: absolute;
+          display: none;
+        }
+
+        h2 {
+          font-size: 15px;
+          font-weight: 400;
+          line-height: 26px;
+          letter-spacing: 0px;
+          text-align: left;
+          color: #69707d;
+          cursor: pointer;
+          :hover {
+            color: #1d2026;
+          }
+        }
+
+        &:hover .hover {
+          width: 100%;
+          display: block;
+          bottom: -62px;
+        }
       }
     }
   }
