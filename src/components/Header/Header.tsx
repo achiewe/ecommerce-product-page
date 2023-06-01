@@ -173,6 +173,12 @@ const HeaderMain = styled.header`
     }
   }
 
+  .avatar-png:hover {
+    border: 2px solid #ff7e1b;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
   hr {
     display: none;
     @media (min-width: 1024px) {

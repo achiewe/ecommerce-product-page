@@ -69,6 +69,7 @@ const BasketMain = styled.div`
 
   .cart-svg {
     cursor: pointer;
+    fill: red;
   }
 `;
 
