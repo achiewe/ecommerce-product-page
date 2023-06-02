@@ -81,6 +81,7 @@ const HeaderMain = styled.header`
     flex-direction: column;
     gap: 49px;
     margin-bottom: 90px;
+    padding-top: 28px;
   }
 
   .header-container {

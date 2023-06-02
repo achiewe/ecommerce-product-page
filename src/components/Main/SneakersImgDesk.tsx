@@ -31,7 +31,7 @@ const SneakersImgDesk = ({
   };
 
   return (
-    <MainDiv>
+    <MainDiv activateOverlay={activateOverlay}>
       <img
         className="image-main"
         src={chooseImage}
@@ -83,7 +83,7 @@ const SneakersImgDesk = ({
   );
 };
 
-const MainDiv = styled.div`
+const MainDiv = styled.div<{ activateOverlay: boolean }>`
   display: none;
   @media (min-width: 1024px) {
     width: 100%;
@@ -124,7 +124,7 @@ const MainDiv = styled.div`
 
   .overlay-div {
     width: 550px;
-    display: flex;
+    display: ${(props) => (props.activateOverlay ? "flex" : "none")};
     flex-direction: column;
     position: absolute;
     gap: 40px;

@@ -47,6 +47,7 @@ const SneakersMain = styled.main`
     flex-direction: row;
     max-width: 1110px;
     gap: 125px;
+    padding-bottom: 132px;
   }
 `;
 export default MainSneakers;
