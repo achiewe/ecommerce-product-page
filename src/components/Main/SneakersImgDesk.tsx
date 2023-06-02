@@ -53,6 +53,9 @@ const SneakersImgDesk = ({
         <div className="overlay-imgmain">
           <svg
             className="close"
+            onClick={() => {
+              setActivateOverlay(false);
+            }}
             width="20"
             height="20"
             viewBox="0 0 20 20"
@@ -129,8 +132,8 @@ const MainDiv = styled.div<{ activateOverlay: boolean }>`
     position: absolute;
     gap: 40px;
     justify-content: center;
-    background-color: black;
     left: 32%;
+    z-index: 2;
     top: 89px;
     align-items: center;
 
