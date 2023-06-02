@@ -7,11 +7,13 @@ import { useState } from "react";
 function App(): JSX.Element {
   const [calculate, setCalculate] = useState<number>(0);
   const [isClicked, setIsClicked] = useState<boolean>(false);
+  const [activateOverlay, setActivateOverlay] = useState<boolean>(false);
   const [result, setResult] = useState<number>(0);
+
   return (
     <MainContainer>
       <GlobalStyles />
-      <Overlay isClicked={isClicked} />
+      <Overlay isClicked={isClicked} activateOverlay={activateOverlay} />
       <Header
         result={result}
         setResult={setResult}
@@ -23,6 +25,8 @@ function App(): JSX.Element {
         setCalculate={setCalculate}
         result={result}
         setResult={setResult}
+        activateOverlay={activateOverlay}
+        setActivateOverlay={setActivateOverlay}
       />
     </MainContainer>
   );
@@ -42,7 +46,7 @@ const MainContainer = styled.div`
   }
 `;
 
-const Overlay = styled.div<{ isClicked: boolean }>`
+const Overlay = styled.div<{ isClicked: boolean; activateOverlay: boolean }>`
   width: 100%;
   height: 100vh;
   background-color: #000000;
@@ -50,6 +54,9 @@ const Overlay = styled.div<{ isClicked: boolean }>`
   position: absolute;
   display: ${(props) => (props.isClicked ? "block" : "none")};
   z-index: 1;
+  @media (min-width: 1024px) {
+    display: ${(props) => (props.activateOverlay ? "block" : "none")};
+  }
 `;
 
 export default App;

@@ -9,7 +9,15 @@ import imgThumb2 from "../../images/image-product-2-thumbnail.jpg";
 import imgThumb3 from "../../images/image-product-3-thumbnail.jpg";
 import imgThumb4 from "../../images/image-product-4-thumbnail.jpg";
 
-const SneakersImgDesk = (): JSX.Element => {
+interface SneakersProps {
+  activateOverlay: boolean;
+  setActivateOverlay(activateOverlay: boolean): void;
+}
+
+const SneakersImgDesk = ({
+  activateOverlay,
+  setActivateOverlay,
+}: SneakersProps): JSX.Element => {
   const imagesArray = [product1, product2, product3, product4];
   const imagesThumb = [imgthumb1, imgThumb2, imgThumb3, imgThumb4];
   const [chooseImage, setChooseImage] = useState<string>(imagesArray[0]);
@@ -18,9 +26,18 @@ const SneakersImgDesk = (): JSX.Element => {
     setChooseImage(Img);
   };
 
+  const OverlayClick = () => {
+    setActivateOverlay(!activateOverlay);
+  };
+
   return (
     <MainDiv>
-      <img className="image-main" src={chooseImage} alt="images" />
+      <img
+        className="image-main"
+        src={chooseImage}
+        onClick={OverlayClick}
+        alt="images"
+      />
       <div className="main-thumb">
         {imagesArray.map((image, index) => (
           <img

@@ -8,6 +8,8 @@ interface PropsSneakers {
   setCalculate: (calculate: number) => void;
   result: number;
   setResult(result: number): void;
+  activateOverlay: boolean;
+  setActivateOverlay(activateOverlay: boolean): void;
 }
 
 const MainSneakers = ({
@@ -15,11 +17,16 @@ const MainSneakers = ({
   setCalculate,
   result,
   setResult,
+  activateOverlay,
+  setActivateOverlay,
 }: PropsSneakers): JSX.Element => {
   return (
     <SneakersMain>
       <SneakersImages />
-      <SneakersImgDesk />
+      <SneakersImgDesk
+        activateOverlay={activateOverlay}
+        setActivateOverlay={setActivateOverlay}
+      />
       <SneakersInfo
         calculate={calculate}
         setCalculate={setCalculate}
