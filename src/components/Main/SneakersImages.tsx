@@ -8,7 +8,7 @@ import product4 from "../../images/image-product-4.jpg";
 import nextIcon from "../../images/icon-next.svg";
 
 const SneakersImages = (): JSX.Element => {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
   const images = [product1, product2, product3, product4];
 
   const previousImage = () => {

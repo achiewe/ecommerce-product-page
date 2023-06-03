@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import { useState } from "react";
 import product1 from "../../images/image-product-1.jpg";
-import previousIcon from "../../images/icon-previous.svg";
-import nextIcon from "../../images/icon-next.svg";
 import product2 from "../../images/image-product-2.jpg";
 import product3 from "../../images/image-product-3.jpg";
 import product4 from "../../images/image-product-4.jpg";
@@ -23,7 +21,7 @@ const SneakersImgDesk = ({
   const imagesArray = [product1, product2, product3, product4];
   const imagesThumb = [imgthumb1, imgThumb2, imgThumb3, imgThumb4];
   const [chooseImage, setChooseImage] = useState<string>(imagesArray[0]);
-  const [imageIndex, setImageIndex] = useState(0);
+  const [imageIndex, setImageIndex] = useState<number>(0);
 
   const previousImage = () => {
     setImageIndex((prevIndex) =>
@@ -85,23 +83,52 @@ const SneakersImgDesk = ({
           </svg>
           <div className="arrow-main">
             <div className="div-arrow" onClick={previousImage}>
-              <img
+              <svg
+                width="12"
+                height="18"
+                xmlns="http://www.w3.org/2000/svg"
                 className="left-right"
-                src={previousIcon}
-                alt="previous icon"
-              />
+              >
+                <path
+                  d="M11 1 3 9l8 8"
+                  stroke="#1D2026"
+                  stroke-width="3"
+                  fill="none"
+                  fill-rule="evenodd"
+                />
+              </svg>
             </div>
             <div className="div-arrow" onClick={nextImage}>
-              <img className="left-right" src={nextIcon} alt="next icon" />
+              <svg
+                width="13"
+                height="18"
+                xmlns="http://www.w3.org/2000/svg"
+                className="left-right"
+              >
+                <path
+                  d="m2 1 8 8-8 8"
+                  stroke="#1D2026"
+                  stroke-width="3"
+                  fill="none"
+                  fill-rule="evenodd"
+                />
+              </svg>
             </div>
           </div>
-          <img className="overlay-prod" src={product1} alt="image product" />
-        </div>
-        <div className="main-thumb">
           {imagesArray.map((image, index) => (
             <img
               key={index}
-              onClick={() => handleClick(image)}
+              className={`overlayProd ${index === imageIndex ? "active" : ""}`}
+              src={image}
+              alt="image product"
+            />
+          ))}
+        </div>
+        <div className="main-thumb">
+          {imagesArray.map((images, index) => (
+            <img
+              key={index}
+              onClick={() => handleClick(images)}
               className="image-thumb"
               src={imagesThumb[index]}
               alt="image thumb"
@@ -172,6 +199,12 @@ const MainDiv = styled.div<{ activateOverlay: boolean }>`
       justify-content: flex-end;
       align-items: flex-end;
 
+      .close {
+        :hover path {
+          stroke: #ff7e1b;
+        }
+      }
+
       .arrow-main {
         width: 600px;
         position: absolute;
@@ -190,23 +223,32 @@ const MainDiv = styled.div<{ activateOverlay: boolean }>`
         background-color: #ffffff;
         display: flex;
         justify-content: center;
+        cursor: pointer;
         align-items: center;
         border-radius: 50%;
       }
 
+      .div-arrow:hover .left-right path {
+        stroke: #ff7e1b;
+      }
+
       .left-right {
-        width: 8px;
-        height: 16px;
+        cursor: pointer;
       }
 
       .close {
         cursor: pointer;
       }
 
-      .overlay-prod {
+      .overlayProd {
         width: 550px;
         height: 550px;
         border-radius: 15px;
+        display: none;
+      }
+
+      .overlayProd .active {
+        display: flex;
       }
     }
   }
