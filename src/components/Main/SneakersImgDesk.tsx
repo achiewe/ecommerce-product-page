@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import { useState } from "react";
 import product1 from "../../images/image-product-1.jpg";
+import previousIcon from "../../images/icon-previous.svg";
+import nextIcon from "../../images/icon-next.svg";
 import product2 from "../../images/image-product-2.jpg";
 import product3 from "../../images/image-product-3.jpg";
 import product4 from "../../images/image-product-4.jpg";
@@ -21,6 +23,19 @@ const SneakersImgDesk = ({
   const imagesArray = [product1, product2, product3, product4];
   const imagesThumb = [imgthumb1, imgThumb2, imgThumb3, imgThumb4];
   const [chooseImage, setChooseImage] = useState<string>(imagesArray[0]);
+  const [imageIndex, setImageIndex] = useState(0);
+
+  const previousImage = () => {
+    setImageIndex((prevIndex) =>
+      prevIndex === 0 ? imagesArray.length - 1 : prevIndex - 1
+    );
+  };
+
+  const nextImage = () => {
+    setImageIndex((prevIndex) =>
+      prevIndex === imagesArray.length - 1 ? 0 : prevIndex + 1
+    );
+  };
 
   const handleClick = (Img: string) => {
     setChooseImage(Img);
@@ -68,6 +83,18 @@ const SneakersImgDesk = ({
               strokeWidth="2"
             />
           </svg>
+          <div className="arrow-main">
+            <div className="div-arrow" onClick={previousImage}>
+              <img
+                className="left-right"
+                src={previousIcon}
+                alt="previous icon"
+              />
+            </div>
+            <div className="div-arrow" onClick={nextImage}>
+              <img className="left-right" src={nextIcon} alt="next icon" />
+            </div>
+          </div>
           <img className="overlay-prod" src={product1} alt="image product" />
         </div>
         <div className="main-thumb">
@@ -144,6 +171,33 @@ const MainDiv = styled.div<{ activateOverlay: boolean }>`
       gap: 24px;
       justify-content: flex-end;
       align-items: flex-end;
+
+      .arrow-main {
+        width: 600px;
+        position: absolute;
+        top: 45%;
+        display: flex;
+
+        right: -30px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .div-arrow {
+        width: 56px;
+        height: 56px;
+        background-color: #ffffff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+      }
+
+      .left-right {
+        width: 8px;
+        height: 16px;
+      }
 
       .close {
         cursor: pointer;
