@@ -35,6 +35,10 @@ const SneakersImgDesk = ({
     );
   };
 
+  const ThumbClick = (index: number) => {
+    setImageIndex(index);
+  };
+
   const handleClick = (Img: string) => {
     setChooseImage(Img);
   };
@@ -124,12 +128,12 @@ const SneakersImgDesk = ({
             />
           ))}
         </div>
-        <div className="main-thumb">
+        <div className="main-thumbOver">
           {imagesArray.map((images, index) => (
             <img
               key={index}
-              onClick={() => handleClick(images)}
-              className="image-thumb"
+              onClick={() => ThumbClick(index)}
+              className="overlay-thumb"
               src={imagesThumb[index]}
               alt="image thumb"
             />
@@ -246,9 +250,29 @@ const MainDiv = styled.div<{ activateOverlay: boolean }>`
         border-radius: 15px;
         display: none;
       }
-
-      .overlayProd .active {
+      .active {
         display: flex;
+      }
+    }
+
+    .main-thumbOver {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 31px;
+
+      .overlay-thumb {
+        width: 88px;
+        height: 88px;
+        border-radius: 10px;
+        cursor: pointer;
+        border: 3px solid #ff7e1b;
+        opacity: 0.75;
+        :hover {
+          opacity: 0.5;
+        }
       }
     }
   }
