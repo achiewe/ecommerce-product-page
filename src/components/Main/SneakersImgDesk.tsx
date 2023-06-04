@@ -48,7 +48,11 @@ const SneakersImgDesk = ({
   };
 
   return (
-    <MainDiv activateOverlay={activateOverlay}>
+    <MainDiv
+      activateOverlay={activateOverlay}
+      chooseImage={chooseImage}
+      imagesArray={imagesArray}
+    >
       <img
         className="image-main"
         src={chooseImage}
@@ -65,6 +69,7 @@ const SneakersImgDesk = ({
             alt="image thumb"
           />
         ))}
+        <div className="overlay-focus"> </div>
       </div>
       <div className="overlay-div">
         <div className="overlay-imgmain">
@@ -144,7 +149,11 @@ const SneakersImgDesk = ({
   );
 };
 
-const MainDiv = styled.div<{ activateOverlay: boolean }>`
+const MainDiv = styled.div<{
+  activateOverlay: boolean;
+  chooseImage: string;
+  imagesArray: string[];
+}>`
   display: none;
   @media (min-width: 1024px) {
     width: 100%;
@@ -166,6 +175,7 @@ const MainDiv = styled.div<{ activateOverlay: boolean }>`
       flex-direction: row;
       justify-content: center;
       align-items: center;
+      position: relative;
       gap: 31px;
 
       .image-thumb {
@@ -173,12 +183,40 @@ const MainDiv = styled.div<{ activateOverlay: boolean }>`
         height: 88px;
         border-radius: 10px;
         cursor: pointer;
-        border: 3px solid #ff7e1b;
-        opacity: 0.75;
 
         :hover {
           opacity: 0.5;
         }
+      }
+
+      .image-thumb:focus .overlay-focus {
+        display: block;
+      }
+
+      .overlay-focus {
+        width: 88px;
+        height: 88px;
+        position: absolute;
+        border-radius: 10px;
+        cursor: pointer;
+        background: linear-gradient(
+          0deg,
+          rgba(255, 255, 255, 0.75),
+          rgba(255, 255, 255, 0.75)
+        );
+        top: 0;
+        right: 0;
+        left: ${(props) =>
+          props.chooseImage === props.imagesArray[0]
+            ? "23px"
+            : props.chooseImage === props.imagesArray[1]
+            ? "142px"
+            : props.chooseImage === props.imagesArray[2]
+            ? "261px"
+            : props.chooseImage === props.imagesArray[3]
+            ? "380px"
+            : "0"};
+        border: 2px solid #ff7e1b;
       }
     }
   }
@@ -268,8 +306,7 @@ const MainDiv = styled.div<{ activateOverlay: boolean }>`
         height: 88px;
         border-radius: 10px;
         cursor: pointer;
-        border: 3px solid #ff7e1b;
-        opacity: 0.75;
+
         :hover {
           opacity: 0.5;
         }
