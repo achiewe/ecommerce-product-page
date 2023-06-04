@@ -149,7 +149,7 @@ const SneakersImgDesk = ({
               key={index}
               onClick={() => ThumbClick(index)}
               className="overlay-thumb"
-              src={imagesThumb[index]}
+              src={images}
               alt="image thumb"
             />
           ))}
