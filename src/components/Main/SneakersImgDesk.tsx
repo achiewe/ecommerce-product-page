@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import product1 from "../../images/image-product-1.jpg";
 import product2 from "../../images/image-product-2.jpg";
 import product3 from "../../images/image-product-3.jpg";
@@ -47,11 +47,16 @@ const SneakersImgDesk = ({
     setActivateOverlay(!activateOverlay);
   };
 
+  useEffect(() => {
+    const index = imagesArray.indexOf(chooseImage);
+    setImageIndex(index);
+  }, [chooseImage]);
   return (
     <MainDiv
       activateOverlay={activateOverlay}
       chooseImage={chooseImage}
       imagesArray={imagesArray}
+      imageIndex={imageIndex}
     >
       <img
         className="image-main"
@@ -61,15 +66,20 @@ const SneakersImgDesk = ({
       />
       <div className="main-thumb">
         {imagesArray.map((image, index) => (
-          <img
-            key={index}
-            onClick={() => handleClick(image)}
-            className="image-thumb"
-            src={imagesThumb[index]}
-            alt="image thumb"
-          />
+          <div className="relative-div" key={index}>
+            <img
+              onClick={() => handleClick(image)}
+              className="image-thumb"
+              src={imagesThumb[index]}
+              alt="image thumb"
+            />
+            <div
+              className={`${
+                imagesArray[index] === chooseImage ? "overlay-focus" : ""
+              } `}
+            />
+          </div>
         ))}
-        <div className="overlay-focus"> </div>
       </div>
       <div className="overlay-div">
         <div className="overlay-imgmain">
@@ -143,6 +153,7 @@ const SneakersImgDesk = ({
               alt="image thumb"
             />
           ))}
+          <div className="overlay-focusMain"> </div>
         </div>
       </div>
     </MainDiv>
@@ -153,6 +164,7 @@ const MainDiv = styled.div<{
   activateOverlay: boolean;
   chooseImage: string;
   imagesArray: string[];
+  imageIndex: number;
 }>`
   display: none;
   @media (min-width: 1024px) {
@@ -178,45 +190,37 @@ const MainDiv = styled.div<{
       position: relative;
       gap: 31px;
 
-      .image-thumb {
-        width: 88px;
-        height: 88px;
-        border-radius: 10px;
-        cursor: pointer;
+      .relative-div {
+        position: relative;
 
-        :hover {
-          opacity: 0.5;
+        .image-thumb {
+          width: 88px;
+          height: 88px;
+          border-radius: 10px;
+          cursor: pointer;
+
+          :hover {
+            opacity: 0.5;
+          }
         }
-      }
 
-      .image-thumb:focus .overlay-focus {
-        display: block;
-      }
-
-      .overlay-focus {
-        width: 88px;
-        height: 88px;
-        position: absolute;
-        border-radius: 10px;
-        cursor: pointer;
-        background: linear-gradient(
-          0deg,
-          rgba(255, 255, 255, 0.75),
-          rgba(255, 255, 255, 0.75)
-        );
-        top: 0;
-        right: 0;
-        left: ${(props) =>
-          props.chooseImage === props.imagesArray[0]
-            ? "23px"
-            : props.chooseImage === props.imagesArray[1]
-            ? "142px"
-            : props.chooseImage === props.imagesArray[2]
-            ? "261px"
-            : props.chooseImage === props.imagesArray[3]
-            ? "380px"
-            : "0"};
-        border: 2px solid #ff7e1b;
+        .overlay-focus {
+          width: 88px;
+          height: 88px;
+          position: absolute;
+          border-radius: 10px;
+          display: flex;
+          cursor: pointer;
+          background: linear-gradient(
+            0deg,
+            rgba(255, 255, 255, 0.75),
+            rgba(255, 255, 255, 0.75)
+          );
+          top: 0;
+          right: 0;
+          left: 0;
+          border: 2px solid #ff7e1b;
+        }
       }
     }
   }
@@ -298,6 +302,7 @@ const MainDiv = styled.div<{
       display: flex;
       flex-direction: row;
       justify-content: center;
+      position: relative;
       align-items: center;
       gap: 31px;
 
@@ -305,11 +310,38 @@ const MainDiv = styled.div<{
         width: 88px;
         height: 88px;
         border-radius: 10px;
+
         cursor: pointer;
 
         :hover {
           opacity: 0.5;
         }
+      }
+
+      .overlay-focusMain {
+        width: 88px;
+        height: 88px;
+        position: absolute;
+        border-radius: 10px;
+        cursor: pointer;
+        background: linear-gradient(
+          0deg,
+          rgba(255, 255, 255, 0.75),
+          rgba(255, 255, 255, 0.75)
+        );
+        top: 0;
+        right: 0;
+        left: ${(props) =>
+          props.imageIndex === 0
+            ? "52px"
+            : props.imageIndex === 1
+            ? "171px"
+            : props.imageIndex === 2
+            ? "290px"
+            : props.imageIndex === 3
+            ? "410px"
+            : "0"};
+        border: 2px solid #ff7e1b;
       }
     }
   }
